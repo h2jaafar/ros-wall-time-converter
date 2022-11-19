@@ -28,14 +28,19 @@
 // %Tag(FULLTEXT)%
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include "std_msgs/Header.h"
+#include "geometry_msgs/TransformStamped.h"
 
 /**
  * This tutorial demonstrates simple receipt of messages over the ROS system.
  */
 // %Tag(CALLBACK)%
-void chatterCallback(const std_msgs::String::ConstPtr& msg)
+void chatterCallback(const geometry_msgs::TransformStamped::ConstPtr& msg)
 {
-  ROS_INFO("I heard: [%s]", msg->data.c_str());
+  std_msgs::Header h = msg->header;
+  cout<<h.stamp.sec<<endl;
+  cout<<h.stamp.nsec<<endl;
+  ROS_INFO("I heard: [something]");
 }
 // %EndTag(CALLBACK)%
 
@@ -76,7 +81,7 @@ int main(int argc, char **argv)
    * away the oldest ones.
    */
 // %Tag(SUBSCRIBER)%
-  ros::Subscriber sub = n.subscribe("walltime", 1000, chatterCallback);
+  ros::Subscriber sub = n.subscribe("/vicon/B04/B04", 1000, chatterCallback);
 // %EndTag(SUBSCRIBER)%
 
   /**
