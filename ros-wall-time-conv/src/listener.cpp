@@ -38,8 +38,8 @@
 void chatterCallback(const geometry_msgs::TransformStamped::ConstPtr& msg)
 {
   std_msgs::Header h = msg->header;
-  cout<<h.stamp.sec<<endl;
-  cout<<h.stamp.nsec<<endl;
+  std::cout<<h.stamp.sec<<std::endl;
+  std::cout<<h.stamp.nsec<<std::endl;
   ROS_INFO("I heard: [something]");
 }
 // %EndTag(CALLBACK)%
