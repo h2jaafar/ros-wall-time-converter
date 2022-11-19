@@ -30,6 +30,9 @@
 #include "std_msgs/String.h"
 #include "std_msgs/Header.h"
 #include "geometry_msgs/TransformStamped.h"
+#include <ctime>
+#include <iomanip>
+#include <iostream>
 
 /**
  * This tutorial demonstrates simple receipt of messages over the ROS system.
@@ -40,6 +43,11 @@ void chatterCallback(const geometry_msgs::TransformStamped::ConstPtr& msg)
   std_msgs::Header h = msg->header;
   std::cout<<h.stamp.sec<<std::endl;
   std::cout<<h.stamp.nsec<<std::endl;
+
+  std::time_t secsSinceEpoch = h.stamp.sec
+  std::cout << std::put_time(std::localtime(&secsSinceEpoch), "%H:%M") << std::endl;
+  // Convert to wall time
+
   ROS_INFO("I heard: [something]");
 }
 // %EndTag(CALLBACK)%
