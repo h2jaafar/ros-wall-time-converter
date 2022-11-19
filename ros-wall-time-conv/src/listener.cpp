@@ -45,7 +45,7 @@ void chatterCallback(const geometry_msgs::TransformStamped::ConstPtr& msg)
   std::cout<<h.stamp.nsec<<std::endl;
 
   std::time_t secsSinceEpoch = h.stamp.sec;
-  std::cout << std::put_time(std::localtime(&secsSinceEpoch), "%H:%M") << std::endl;
+  std::cout << std::put_time(std::localtime(&secsSinceEpoch), "%H:%M:%S") << std::endl;
   // Convert to wall time
 
   ROS_INFO("I heard: [something]");
